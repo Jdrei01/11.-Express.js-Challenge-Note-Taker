@@ -1,9 +1,10 @@
-// import express, node, and file system
+// Import express, node, and file system
 const express = require('express');
 const app = express();
+
 const path = require('path');
 
-// middleware
+// express middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
