@@ -1,8 +1,11 @@
 // Import express, node, and file system
 const express = require('express');
 const app = express();
-
 const path = require('path');
+const uuid = require('./helpers/uuid')
+
+const db = require('./db/db.json')
+const {readAndAppend} = require('./helpers/fsUtils');
 
 // express middleware
 app.use(express.json());
@@ -28,8 +31,9 @@ app.get('/api/notes', function (req, res) {
 
 // 
 app.post('/api/notes', function(req, res) {
-    console.log('req -> ', req);
-
+    const newNote = {title: req.body.title, text: req.body.text, id: uuid()}
+    readAndAppend(newNote, './db/db.json');
+    res.json(newNote);
 })
 
 // listen for connections on specfied ports
