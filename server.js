@@ -6,6 +6,7 @@ const uuid = require('./helpers/uuid')
 
 const db = require('./db/db.json')
 const {readAndAppend} = require('./helpers/fsUtils');
+const PORT =process.env.PORT||3001
 
 // express middleware
 app.use(express.json());
@@ -37,5 +38,5 @@ app.post('/api/notes', function(req, res) {
 })
 
 // listen for connections on specfied ports
-app.listen(3001, () => console.log('App now running on http://127.0.0.1:3001'));
+app.listen(PORT, () => console.log('App now running on http://127.0.0.1:3001'));
 
